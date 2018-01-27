@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NativeModules, View } from 'react-native'
 
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Router, Route } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 
 import { ThemeProvider, COLOR } from 'react-native-material-ui'
@@ -23,7 +23,7 @@ import List from './Components/List'
 import RadioButton from './Components/RadioButton'
 import Toolbar from './Components/Toolbars'
 import Snackbar from './Components/Snackbar'
-import TextInput from './Components/TextInput'
+//import TextInput from './Components/TextInput'
 
 import AppDrawer from './AppDrawer'
 
@@ -97,7 +97,7 @@ class App extends Component {
               <Route path="/iconToggle" component={IconToggle} />
               <Route path="/list" component={List} />
               <Route path="/radioButton" component={RadioButton} />
-              <Route path="/textInput" component={TextInput} />
+              {/*<Route path="/textInput" component={TextInput} />*/}
               <Route path="/toolbar" component={Toolbar} />
               <Route path="/snackbar" component={Snackbar} />
             </View>

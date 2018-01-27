@@ -1,0 +1,22 @@
+patch-package
+--- a/node_modules/react-native-vector-icons/.babelrc
++++ b/node_modules/react-native-vector-icons/.babelrc
+@@ -1,5 +1,17 @@
+ {
+   "presets": [
+     "react-native"
++  ],
++  "plugins": [
++    "react-native-web",
++    [
++      "extension-resolver",
++      {
++        "extensions": [
++          ".web.js",
++          ".js"
++        ]
++      }
++    ]
+   ]
+ }
+\ No newline at end of file

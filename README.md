@@ -1,6 +1,6 @@
 ## Demo app with react-mative-material-ui and react-native-web
 
-This app uses create-react-app with react-app-rewired to modify webpack
+This app uses `parcel` with `patch-package`
 
 ![screen1.png](/docs/screen1.png)
 Update Readme

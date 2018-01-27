@@ -1,0 +1,26 @@
+patch-package
+--- a/node_modules/react-sidebar/.babelrc
++++ b/node_modules/react-sidebar/.babelrc
+@@ -1,6 +1,17 @@
+-
+ {
+-  "presets": ["es2015", "babel-preset-react"],
+-  "plugins": ["transform-object-rest-spread"],
+-  "highlightCode": true
++  "presets": [
++    "react-native"
++  ],
++  "plugins": [
++    "react-native-web",
++    [
++      "extension-resolver",
++      {
++        "extensions": [
++          ".web.js",
++          ".js"
++        ]
++      }
++    ]
++  ]
+ }
+\ No newline at end of file

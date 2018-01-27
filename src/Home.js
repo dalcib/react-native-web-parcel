@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {
-  ToastAndroid,
+  //ToastAndroid,
   ScrollView,
   Platform,
   Animated,
@@ -179,7 +179,7 @@ class Home extends Component {
           transition="speedDial"
           onPress={action => {
             if (Platform.OS === 'android') {
-              ToastAndroid.show(action, ToastAndroid.SHORT)
+              //ToastAndroid.show(action, ToastAndroid.SHORT)
             }
           }}
           style={{

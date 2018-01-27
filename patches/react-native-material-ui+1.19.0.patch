@@ -1,0 +1,116 @@
+patch-package
+--- a/node_modules/react-native-material-ui/.babelrc
++++ b/node_modules/react-native-material-ui/.babelrc
+@@ -1,3 +1,17 @@
+ {
+-    "presets": ["react-native"]
++    "presets": [
++        "react-native"
++    ],
++    "plugins": [
++        "react-native-web",
++        [
++            "extension-resolver",
++            {
++                "extensions": [
++                    ".web.js",
++                    ".js"
++                ]
++            }
++        ]
++    ]
+ }
+\ No newline at end of file
+--- a/node_modules/react-native-material-ui/src/ActionButton/ActionButton.react.js
++++ b/node_modules/react-native-material-ui/src/ActionButton/ActionButton.react.js
+@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
+ import {
+     View,
+     Text,
+-    LayoutAnimation,
++    //LayoutAnimation,
+     StyleSheet,
+     TouchableWithoutFeedback,
+     Animated,
+@@ -197,7 +197,7 @@ class ActionButton extends PureComponent {
+     }
+     componentWillUpdate(nextProps, nextState) {
+         if (this.state.render !== nextState.render) {
+-            LayoutAnimation.easeInEaseOut();
++            //LayoutAnimation.easeInEaseOut();
+         }
+     }
+     onPress = (action) => {
+--- a/node_modules/react-native-material-ui/src/Drawer/HeaderAccount.react.js
++++ b/node_modules/react-native-material-ui/src/Drawer/HeaderAccount.react.js
+@@ -32,6 +32,8 @@ const contextTypes = {
+     uiTheme: PropTypes.object.isRequired,
+ };
+ 
++let avatarIndex = 0
++
+ function getStyles(props, context) {
+     const { drawerHeaderAccount } = context.uiTheme;
+ 
+@@ -87,6 +89,9 @@ class HeaderAcount extends PureComponent {
+     renderAccount = (account) => {
+         const { styles } = this.state;
+ 
++        account.key = avatarIndex
++        avatarIndex += 1
++
+         // invariant(account.key, 'Please provide key prop to account object in accounts array.');
+ 
+         return (
+--- a/node_modules/react-native-material-ui/src/Drawer/Section.react.js
++++ b/node_modules/react-native-material-ui/src/Drawer/Section.react.js
+@@ -94,9 +94,8 @@ class Section extends PureComponent {
+                         let style = { primaryText: typography.buttons };
+ 
+                         if (item.active) {
+-                            style = this.context.uiTheme.drawerSectionActiveItem;
++                            //style = this.context.uiTheme.drawerSectionActiveItem;
+                         }
+-
+                         return (
+                             <ListItem
+                                 dense
+--- a/node_modules/react-native-material-ui/src/ListItem/ListItem.react.js
++++ b/node_modules/react-native-material-ui/src/ListItem/ListItem.react.js
+@@ -251,7 +251,7 @@ class ListItem extends PureComponent {
+         UIManager.showPopupMenu(
+             findNodeHandle(this.menu),
+             labels,
+-            () => {},
++            () => { },
+             (result, index) => {
+                 if (onRightElementPress) {
+                     onRightElementPress({
+@@ -416,7 +416,7 @@ class ListItem extends PureComponent {
+                     color={flattenRightElement.color}
+                     name={action}
+                     size={24}
+-                    style={styles.rightElement}
++                    style={flattenRightElement}
+                     onPress={() => this.onRightElementPressed({ action })}
+                 />
+             ));
+--- a/node_modules/react-native-material-ui/src/utils/index.js
++++ b/node_modules/react-native-material-ui/src/utils/index.js
+@@ -1,12 +1,12 @@
+ import {
+     View,
+     BackHandler,
+-    ViewPropTypes as RNViewPropTypes,
+-    BackAndroid as DeprecatedBackAndroid,
++    ViewPropTypes,
++    //BackAndroid as DeprecatedBackAndroid,
+ } from 'react-native';
+ 
+-const ViewPropTypes = RNViewPropTypes || View.propTypes;
+-const BackAndroid = BackHandler || DeprecatedBackAndroid;
++//const ViewPropTypes = ViewPropTypes || View.propTypes;
++const BackAndroid = BackHandler //|| DeprecatedBackAndroid;
+ 
+ export {
+     ViewPropTypes,

@@ -1,0 +1,23 @@
+patch-package
+new file mode 100644
+--- /dev/null
++++ b/node_modules/react-native-md-textinput/.babelrc
+@@ -0,0 +1,17 @@
++{
++    "presets": [
++        "react-native"
++    ],
++    "plugins": [
++        "react-native-web",
++        [
++            "extension-resolver",
++            {
++                "extensions": [
++                    ".web.js",
++                    ".js"
++                ]
++            }
++        ]
++    ]
++}
+\ No newline at end of file
